@@ -13,11 +13,4 @@ public class FarmTile : MonoBehaviour
         _seededPlant = plantToSeed;
         _seededPlant.SpawnVisual(transform.position);
     }
-
-#if UNITY_EDITOR
-    private void OnMouseDown()
-    {
-        
-    }
-#endif
 }
