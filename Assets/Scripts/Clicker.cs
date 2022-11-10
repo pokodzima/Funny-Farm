@@ -9,4 +9,10 @@ public class Clicker : MonoBehaviour
     {
         OnMouseClicked.Invoke();
     }
+
+    private void Update()
+    {
+        
+        
+    }
 }
