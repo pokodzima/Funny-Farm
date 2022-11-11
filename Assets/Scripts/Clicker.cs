@@ -3,16 +3,26 @@ using UnityEngine.Events;
 
 public class Clicker : MonoBehaviour
 {
-    public UnityEvent OnMouseClicked;
+    Camera _camera;
 
-    private void OnMouseDown()
+    void Awake()
     {
-        OnMouseClicked.Invoke();
+        _camera = Camera.main;
     }
 
-    private void Update()
+    void Update()
     {
-        
-        
+        if (Input.GetMouseButtonDown(0))
+        {
+            Vector3 mousePosition = Input.mousePosition;
+            Ray ray = _camera.ScreenPointToRay(mousePosition);
+            if (Physics.Raycast(ray, out RaycastHit hit))
+            {
+                if (hit.transform.TryGetComponent(out IClickableBehaviour clickableBehaviour))
+                {
+                    clickableBehaviour.OnClick();
+                }
+            }
+        }
     }
 }
