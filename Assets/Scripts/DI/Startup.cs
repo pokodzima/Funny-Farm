@@ -10,7 +10,7 @@ namespace DI
     {
         [SerializeField] private SeedingCanvas seedingCanvas;
         [SerializeField] private CameraController cameraController;
-        [SerializeField] private Clicker.Clicker _clicker;
+        [SerializeField] private Clicker.Clicker clicker;
 
         private void Awake()
         {
@@ -19,8 +19,10 @@ namespace DI
             {
                 injectable.Inject(seedingCanvas);
             }
+
             seedingCanvas.Inject(cameraController);
-            _clicker.Inject(seedingCanvas);
+            clicker.Inject(seedingCanvas);
+            clicker.Inject(cameraController);
         }
     }
 }

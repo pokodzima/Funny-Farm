@@ -1,3 +1,4 @@
+using Camera;
 using DI;
 using UI;
 using UnityEngine;
@@ -9,7 +10,7 @@ namespace Clicker
     {
         private UnityEngine.Camera _camera;
         private SeedingCanvas _seedingCanvas;
-        
+
 
         void Update()
         {
@@ -36,7 +37,14 @@ namespace Clicker
 
         public void Inject(IService service)
         {
-            _seedingCanvas = (SeedingCanvas)service;
+            if (service.GetType() == typeof(SeedingCanvas))
+            {
+                _seedingCanvas = (SeedingCanvas)service;
+            }
+            else if (service.GetType() == typeof(CameraController))
+            {
+                _camera = ((CameraController)service).GetCamera();
+            }
         }
     }
 }
