@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class FarmTile : MonoBehaviour , IClickableBehaviour
 {
+    public SeedingCanvas SeedingCanvas; 
     private Plant _seededPlant;
 
     public void SeedTile(Plant plantToSeed)
