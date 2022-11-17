@@ -7,9 +7,17 @@ namespace Camera
     public class CameraController : MonoBehaviour, IService
     {
         private UnityEngine.Camera _camera;
-        public void Awake()
+
+        public UnityEngine.Camera Camera
         {
-            _camera = GetComponent<UnityEngine.Camera>();
+            get
+            {
+                if (_camera == null)
+                {
+                    _camera = GetComponent<UnityEngine.Camera>();
+                }
+                return _camera;
+            }
         }
 
         public Vector3 GetPosition()
@@ -20,11 +28,6 @@ namespace Camera
         public Vector3 GetForwardVector()
         {
             return transform.forward;
-        }
-
-        public UnityEngine.Camera GetCamera()
-        {
-            return _camera;
         }
     }
 }

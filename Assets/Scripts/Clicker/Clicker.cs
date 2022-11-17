@@ -43,7 +43,7 @@ namespace Clicker
             }
             else if (service.GetType() == typeof(CameraController))
             {
-                _camera = ((CameraController)service).GetCamera();
+                _camera = ((CameraController)service).Camera;
             }
         }
     }
