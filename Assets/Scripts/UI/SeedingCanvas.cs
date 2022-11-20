@@ -1,5 +1,6 @@
 using Camera;
 using DI;
+using FarmTiles;
 using UnityEngine;
 
 namespace UI
@@ -11,17 +12,19 @@ namespace UI
         private Vector3 _cameraPosition;
         private Vector3 _cameraForwardVector;
         private GameObject _canvasGameObject;
+        public FarmTile CurrentTile { get; private set; }
 
         private void Awake()
         {
             _canvasGameObject = GetComponentInChildren<Canvas>().gameObject;
         }
 
-        public void SetCanvas(Vector3 position)
+        public void SetCanvas(FarmTile farmTile)
         {
             _canvasGameObject.SetActive(true);
-            transform.position = position + canvasOffset;
+            transform.position = farmTile.transform.position + canvasOffset;
             transform.forward = _cameraForwardVector;
+            CurrentTile = farmTile;
         }
 
         public void HideCanvas()

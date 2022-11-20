@@ -15,13 +15,12 @@ namespace FarmTiles
         {
             if (_seededPlant != null) return;
             _seededPlant = plantToSeed;
-            _seededPlant.SpawnVisual(transform.position);
         }
 
 
         public void OnClick()
         {
-            _seedingCanvas.SetCanvas(transform.position);
+            _seedingCanvas.SetCanvas(this);
         }
         
         public void Inject(IService service)

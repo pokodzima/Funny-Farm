@@ -26,10 +26,10 @@ namespace Clicker
                         {
                             clickableBehaviour.OnClick();
                         }
-                    }
-                    else
-                    {
-                        _seedingCanvas.HideCanvas();
+                        else
+                        {
+                            _seedingCanvas.HideCanvas();
+                        }
                     }
                 }
             }

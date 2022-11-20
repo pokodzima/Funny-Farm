@@ -11,13 +11,19 @@ namespace DI
         [SerializeField] private SeedingCanvas seedingCanvas;
         [SerializeField] private CameraController cameraController;
         [SerializeField] private Clicker.Clicker clicker;
+        [SerializeField] private SeedingButton[] seedingButtons;
 
         private void Awake()
         {
             var tiles = FindObjectsOfType<FarmTileFactory>();
-            foreach (var injectable in tiles.OfType<IInjectable>())
+            foreach (var tile in tiles)
             {
-                injectable.Inject(seedingCanvas);
+                tile.Inject(seedingCanvas);
+            }
+
+            foreach (var button in seedingButtons)
+            {
+                button.Inject(seedingCanvas);
             }
 
             seedingCanvas.Inject(cameraController);
