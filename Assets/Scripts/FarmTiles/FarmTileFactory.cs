@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using Camera;
 using DI;
 using UI;
 using UnityEngine;
@@ -14,7 +16,7 @@ namespace FarmTiles
 
         private SeedingCanvas _seedingCanvas;
 
-        private void PlantTiles()
+        public void PlantTiles()
         {
             _currentTilePosition.x = (-width + 1) / 2f * (tileSize + tilePadding);
             for (int w = 0; w < width; w++)
@@ -23,7 +25,8 @@ namespace FarmTiles
                 for (int l = 0; l < lenght; l++)
                 {
                     var tile = Instantiate(farmTilePrefab, _currentTilePosition, Quaternion.identity);
-                    tile.GetComponent<FarmTile>().Inject(_seedingCanvas);
+                    FarmTile farmTile = tile.GetComponent<FarmTile>();
+                    farmTile.Inject(_seedingCanvas);
                     _currentTilePosition.z += tileSize + tilePadding;
                 }
 
@@ -35,7 +38,6 @@ namespace FarmTiles
         public void Inject(IService service)
         {
             _seedingCanvas = (SeedingCanvas)service;
-            PlantTiles();
         }
     }
 }

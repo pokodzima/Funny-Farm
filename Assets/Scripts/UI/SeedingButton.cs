@@ -1,7 +1,10 @@
 using System;
+using Character;
 using DI;
 using Scriptable_objects.Plants;
 using UnityEngine;
+using UnityEngine.AI;
+using UnityEngine.Assertions.Must;
 using UnityEngine.UI;
 
 namespace UI
@@ -11,6 +14,7 @@ namespace UI
     {
         [SerializeField] private Plant seedingTypeOfPlant;
         private SeedingCanvas _seedingCanvas;
+        private FarmerCharacter _farmerCharacter;
         
 
         private void Awake()
@@ -20,12 +24,25 @@ namespace UI
 
         private void PlantSeed()
         {
-            _seedingCanvas.CurrentTile.SeedTile(seedingTypeOfPlant);
+            if (_seedingCanvas.CurrentTile.IsSeeded)
+            {
+                return;
+            }
+            
+            _farmerCharacter.SeedTile(_seedingCanvas.CurrentTile,seedingTypeOfPlant);
+            _seedingCanvas.HideCanvas();
         }
 
         public void Inject(IService service)
         {
-            _seedingCanvas = (SeedingCanvas)service;
+            if (service.GetType() == typeof(SeedingCanvas))
+            {
+                _seedingCanvas = (SeedingCanvas)service;
+            }
+            else if (service.GetType() == typeof(FarmerCharacter))
+            {
+                _farmerCharacter = (FarmerCharacter)service;
+            }
         }
     }
 }

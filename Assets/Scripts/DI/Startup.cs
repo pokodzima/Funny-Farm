@@ -1,5 +1,6 @@
 using System.Linq;
 using Camera;
+using Character;
 using FarmTiles;
 using UI;
 using UnityEngine;
@@ -12,18 +13,18 @@ namespace DI
         [SerializeField] private CameraController cameraController;
         [SerializeField] private Clicker.Clicker clicker;
         [SerializeField] private SeedingButton[] seedingButtons;
+        [SerializeField] private FarmTileFactory farmTileFactory;
+        [SerializeField] private FarmerCharacter farmerCharacter;
 
         private void Awake()
         {
-            var tiles = FindObjectsOfType<FarmTileFactory>();
-            foreach (var tile in tiles)
-            {
-                tile.Inject(seedingCanvas);
-            }
+            farmTileFactory.Inject(seedingCanvas);
+            farmTileFactory.PlantTiles();
 
             foreach (var button in seedingButtons)
             {
                 button.Inject(seedingCanvas);
+                button.Inject(farmerCharacter);
             }
 
             seedingCanvas.Inject(cameraController);
