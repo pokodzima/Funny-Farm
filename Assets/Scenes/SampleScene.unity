@@ -708,25 +708,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a9a9ab05dd55480b8c371f8b5fffb90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1930167853 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8032492271795961679, guid: 45c8bc3e836474793b176009473b23e7,
+--- !u!114 &1930167856 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1930167856, guid: 45c8bc3e836474793b176009473b23e7,
     type: 3}
   m_PrefabInstance: {fileID: 1304340147}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1930167856
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1930167853}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 37f2e02cf01b44122976c1c391ea7a13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destinationThreshold: 2
 --- !u!1 &2073430431
 GameObject:
   m_ObjectHideFlags: 0
@@ -1005,11 +998,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 102651130}
     m_Modifications:
-    - target: {fileID: 8644152385058076732, guid: df243e4fe4ba84bea9dafadcc1f8c716,
-        type: 3}
-      propertyPath: tilePadding
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 8644152385058076733, guid: df243e4fe4ba84bea9dafadcc1f8c716,
         type: 3}
       propertyPath: m_RootOrder
