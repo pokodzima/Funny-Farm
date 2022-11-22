@@ -15,6 +15,7 @@ namespace FarmTiles
         private Vector3 _currentTilePosition;
 
         private SeedingCanvas _seedingCanvas;
+        private CameraController _cameraController;
 
         public void PlantTiles()
         {
@@ -27,6 +28,7 @@ namespace FarmTiles
                     var tile = Instantiate(farmTilePrefab, _currentTilePosition, Quaternion.identity);
                     FarmTile farmTile = tile.GetComponent<FarmTile>();
                     farmTile.Inject(_seedingCanvas);
+                    farmTile.Inject(_cameraController);
                     _currentTilePosition.z += tileSize + tilePadding;
                 }
 
@@ -37,7 +39,14 @@ namespace FarmTiles
 
         public void Inject(IService service)
         {
-            _seedingCanvas = (SeedingCanvas)service;
+            if (service.GetType() == typeof(SeedingCanvas))
+            {
+                _seedingCanvas = (SeedingCanvas)service;
+            }
+            else if (service.GetType() == typeof(CameraController))
+            {
+                _cameraController = (CameraController)service;
+            }
         }
     }
 }

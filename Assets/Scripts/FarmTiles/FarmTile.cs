@@ -1,4 +1,6 @@
 using System;
+using System.Globalization;
+using Camera;
 using Clicker;
 using DI;
 using Scriptable_objects.Plants;
@@ -21,6 +23,7 @@ namespace FarmTiles
 
         public SeedState State { get; private set; }
         private SeedingCanvas _seedingCanvas;
+        private CameraController _cameraController;
         private Plant _seededPlant;
         private float _growTimer;
         private GameObject _visualPlant;
@@ -38,6 +41,8 @@ namespace FarmTiles
             var scale = _visualPlant.transform.localScale;
             scale.y = 0;
             _visualPlant.transform.localScale = scale;
+
+            _cameraController.FocusCamera(transform.position);
         }
 
         private void Update()
@@ -45,16 +50,19 @@ namespace FarmTiles
             switch (State)
             {
                 case SeedState.Seeded:
-                    print(_growTimer);
                     _growTimer -= Time.deltaTime;
+                    var growTime = (_seededPlant.TimeToGrow - _growTimer) / _seededPlant.TimeToGrow;
                     var scale = _visualPlant.transform.localScale;
-                    scale.y = Mathf.Lerp(0f, 1f, (_seededPlant.TimeToGrow - _growTimer) / _seededPlant.TimeToGrow);
+                    scale.y = Mathf.Lerp(0f, 1f, growTime);
                     _visualPlant.transform.localScale = scale;
                     if (_growTimer <= 0f)
                     {
                         State = SeedState.Grown;
+                        tileStatus.text = _seededPlant.name;
+                        return;
                     }
 
+                    tileStatus.text = ((int)_growTimer).ToString(CultureInfo.InvariantCulture);
                     break;
             }
         }
@@ -70,7 +78,7 @@ namespace FarmTiles
                 case SeedState.Grown:
                     State = SeedState.Empty;
                     _seededPlant = null;
-                    tileStatus.text = "No Plant";
+                    tileStatus.text = "";
                     Destroy(_visualPlant);
                     break;
             }
@@ -78,7 +86,14 @@ namespace FarmTiles
 
         public void Inject(IService service)
         {
-            _seedingCanvas = (SeedingCanvas)service;
+            if (service.GetType() == typeof(SeedingCanvas))
+            {
+                _seedingCanvas = (SeedingCanvas)service;
+            }
+            else if (service.GetType() == typeof(CameraController))
+            {
+                _cameraController = (CameraController)service;
+            }
         }
     }
 }

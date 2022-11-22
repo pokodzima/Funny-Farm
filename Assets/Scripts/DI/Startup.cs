@@ -15,10 +15,12 @@ namespace DI
         [SerializeField] private SeedingButton[] seedingButtons;
         [SerializeField] private FarmTileFactory farmTileFactory;
         [SerializeField] private FarmerCharacter farmerCharacter;
+        [SerializeField] private ResetCameraButton resetCameraButton;
 
         private void Awake()
         {
             farmTileFactory.Inject(seedingCanvas);
+            farmTileFactory.Inject(cameraController);
             farmTileFactory.PlantTiles();
 
             foreach (var button in seedingButtons)
@@ -30,6 +32,8 @@ namespace DI
             seedingCanvas.Inject(cameraController);
             clicker.Inject(seedingCanvas);
             clicker.Inject(cameraController);
+
+            resetCameraButton.Inject(cameraController);
         }
     }
 }
