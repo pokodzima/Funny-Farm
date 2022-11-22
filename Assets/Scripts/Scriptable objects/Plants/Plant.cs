@@ -6,7 +6,7 @@ namespace Scriptable_objects.Plants
     public class Plant : ScriptableObject
     {
         public float TimeToGrow;
-        
-        
+        public GameObject visualObject;
+
     }
 }

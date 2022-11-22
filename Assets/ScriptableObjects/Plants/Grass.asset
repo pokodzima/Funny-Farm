@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6854f4793cf2416d91ffec44ed767194, type: 3}
   m_Name: Grass
   m_EditorClassIdentifier: 
-  TimeToGrow: 0
+  TimeToGrow: 5
+  visualObject: {fileID: 2674367632558141620, guid: 9a38b42ee528f4e09a695d2e83f4ca29,
+    type: 3}

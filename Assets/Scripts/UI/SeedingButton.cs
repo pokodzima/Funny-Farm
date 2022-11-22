@@ -1,6 +1,7 @@
 using System;
 using Character;
 using DI;
+using FarmTiles;
 using Scriptable_objects.Plants;
 using UnityEngine;
 using UnityEngine.AI;
@@ -15,7 +16,7 @@ namespace UI
         [SerializeField] private Plant seedingTypeOfPlant;
         private SeedingCanvas _seedingCanvas;
         private FarmerCharacter _farmerCharacter;
-        
+
 
         private void Awake()
         {
@@ -24,12 +25,13 @@ namespace UI
 
         private void PlantSeed()
         {
-            if (_seedingCanvas.CurrentTile.IsSeeded)
+            if (_seedingCanvas.CurrentTile.State == FarmTile.SeedState.Seeded ||
+                _seedingCanvas.CurrentTile.State == FarmTile.SeedState.Grown)
             {
                 return;
             }
-            
-            _farmerCharacter.SeedTile(_seedingCanvas.CurrentTile,seedingTypeOfPlant);
+
+            _farmerCharacter.SeedTile(_seedingCanvas.CurrentTile, seedingTypeOfPlant);
             _seedingCanvas.HideCanvas();
         }
 
