@@ -21,6 +21,7 @@ namespace DI
         {
             farmTileFactory.Inject(seedingCanvas);
             farmTileFactory.Inject(cameraController);
+            farmTileFactory.Inject(farmerCharacter);
             farmTileFactory.PlantTiles();
 
             foreach (var button in seedingButtons)

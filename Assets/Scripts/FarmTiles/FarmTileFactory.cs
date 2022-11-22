@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Camera;
+using Character;
 using DI;
 using UI;
 using UnityEngine;
@@ -16,6 +17,7 @@ namespace FarmTiles
 
         private SeedingCanvas _seedingCanvas;
         private CameraController _cameraController;
+        private FarmerCharacter _farmerCharacter;
 
         public void PlantTiles()
         {
@@ -29,6 +31,7 @@ namespace FarmTiles
                     FarmTile farmTile = tile.GetComponent<FarmTile>();
                     farmTile.Inject(_seedingCanvas);
                     farmTile.Inject(_cameraController);
+                    farmTile.Inject(_farmerCharacter);
                     _currentTilePosition.z += tileSize + tilePadding;
                 }
 
@@ -46,6 +49,10 @@ namespace FarmTiles
             else if (service.GetType() == typeof(CameraController))
             {
                 _cameraController = (CameraController)service;
+            }
+            else if (service.GetType() == typeof(FarmerCharacter))
+            {
+                _farmerCharacter = (FarmerCharacter)service;
             }
         }
     }

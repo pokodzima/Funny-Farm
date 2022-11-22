@@ -1,6 +1,7 @@
 using System;
 using System.Globalization;
 using Camera;
+using Character;
 using Clicker;
 using DI;
 using Scriptable_objects.Plants;
@@ -24,6 +25,7 @@ namespace FarmTiles
         public SeedState State { get; private set; }
         private SeedingCanvas _seedingCanvas;
         private CameraController _cameraController;
+        private FarmerCharacter _farmerCharacter;
         private Plant _seededPlant;
         private float _growTimer;
         private GameObject _visualPlant;
@@ -39,6 +41,7 @@ namespace FarmTiles
             _growTimer = _seededPlant.TimeToGrow;
             _visualPlant = Instantiate(_seededPlant.visualObject, transform.position, transform.rotation, transform);
             _visualPlant.GetComponentInChildren<ClickablePlant>().FarmTile = this;
+            _visualPlant.GetComponentInChildren<ClickablePlant>().FarmerCharacter = _farmerCharacter;
             var scale = _visualPlant.transform.localScale;
             scale.y = 0;
             _visualPlant.transform.localScale = scale;
@@ -85,6 +88,7 @@ namespace FarmTiles
             {
                 return;
             }
+
             if (_seededPlant.Action == Plant.AfterGrowthActions.Nothing)
             {
                 return;
@@ -108,6 +112,10 @@ namespace FarmTiles
             else if (service.GetType() == typeof(CameraController))
             {
                 _cameraController = (CameraController)service;
+            }
+            else if (service.GetType() == typeof(FarmerCharacter))
+            {
+                _farmerCharacter = (FarmerCharacter)service;
             }
         }
     }
