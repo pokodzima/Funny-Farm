@@ -9,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4934123807621426318}
+  - component: {fileID: -7863447041278637760}
+  - component: {fileID: -3633194328553824695}
   m_Layer: 0
   m_Name: Carrot
   m_TagString: Untagged
@@ -32,6 +34,33 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-7863447041278637760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5380926607444202358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c049bc2bd8bf74cd9b94a308187a05ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FarmTile: {fileID: 0}
+--- !u!136 &-3633194328553824695
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5380926607444202358}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5958880635789572126
 GameObject:
   m_ObjectHideFlags: 0
@@ -43,7 +72,6 @@ GameObject:
   - component: {fileID: 7744653290509843999}
   - component: {fileID: 4757442453740532962}
   - component: {fileID: 1845783752597031265}
-  - component: {fileID: 5041525344330191598}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
@@ -116,17 +144,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &5041525344330191598
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5958880635789572126}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}

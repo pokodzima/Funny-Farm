@@ -8,5 +8,13 @@ namespace Scriptable_objects.Plants
         public float TimeToGrow;
         public GameObject visualObject;
 
+        public AfterGrowthActions Action;
+
+        public enum AfterGrowthActions
+        {
+            Nothing,
+            Pickup,
+            Mow
+        }
     }
 }

@@ -15,3 +15,4 @@ MonoBehaviour:
   TimeToGrow: 10
   visualObject: {fileID: 5380926607444202358, guid: c169aa90e6cba4426835793dc8b63926,
     type: 3}
+  Action: 1

@@ -38,6 +38,7 @@ namespace FarmTiles
 
             _growTimer = _seededPlant.TimeToGrow;
             _visualPlant = Instantiate(_seededPlant.visualObject, transform.position, transform.rotation, transform);
+            _visualPlant.GetComponentInChildren<ClickablePlant>().FarmTile = this;
             var scale = _visualPlant.transform.localScale;
             scale.y = 0;
             _visualPlant.transform.localScale = scale;
@@ -75,12 +76,26 @@ namespace FarmTiles
                 case SeedState.Empty:
                     _seedingCanvas.SetCanvas(this);
                     break;
-                case SeedState.Grown:
-                    State = SeedState.Empty;
-                    _seededPlant = null;
-                    tileStatus.text = "";
-                    Destroy(_visualPlant);
-                    break;
+            }
+        }
+
+        public void TryMowPlant()
+        {
+            if (State != SeedState.Grown)
+            {
+                return;
+            }
+            if (_seededPlant.Action == Plant.AfterGrowthActions.Nothing)
+            {
+                return;
+            }
+            else
+            {
+                tileStatus.text = "";
+                Destroy(_visualPlant);
+                _growTimer = 0f;
+                State = SeedState.Empty;
+                _seededPlant = null;
             }
         }
 
