@@ -22,6 +22,7 @@ namespace Clicker
                 Ray ray = _camera.ScreenPointToRay(mousePosition);
                 if (Physics.Raycast(ray, out RaycastHit hit, 100f, clickerLayerMask ))
                 {
+                    print(hit.transform.name);
                     if (!EventSystem.current.IsPointerOverGameObject())
                     {
                         if (hit.transform.TryGetComponent(out IClickableBehaviour clickableBehaviour))
