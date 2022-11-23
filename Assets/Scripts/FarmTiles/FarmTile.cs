@@ -26,6 +26,7 @@ namespace FarmTiles
         private SeedingCanvas _seedingCanvas;
         private CameraController _cameraController;
         private FarmerCharacter _farmerCharacter;
+        private ScoreManager _scoreManager;
         private Plant _seededPlant;
         private float _growTimer;
         private GameObject _visualPlant;
@@ -63,6 +64,7 @@ namespace FarmTiles
                     {
                         State = SeedState.Grown;
                         tileStatus.text = _seededPlant.name;
+                        _scoreManager.AddExperience((int)_seededPlant.TimeToGrow);
                         return;
                     }
 
@@ -95,6 +97,11 @@ namespace FarmTiles
             }
             else
             {
+                if (_seededPlant.name == "Carrot")
+                {
+                    _scoreManager.AddCarrot();
+                }
+                
                 tileStatus.text = "";
                 Destroy(_visualPlant);
                 _growTimer = 0f;
@@ -116,6 +123,9 @@ namespace FarmTiles
             else if (service.GetType() == typeof(FarmerCharacter))
             {
                 _farmerCharacter = (FarmerCharacter)service;
+            } else if (service.GetType() == typeof(ScoreManager))
+            {
+                _scoreManager = (ScoreManager)service;
             }
         }
     }

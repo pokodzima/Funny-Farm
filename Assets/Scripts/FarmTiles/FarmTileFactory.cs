@@ -18,6 +18,7 @@ namespace FarmTiles
         private SeedingCanvas _seedingCanvas;
         private CameraController _cameraController;
         private FarmerCharacter _farmerCharacter;
+        private ScoreManager _scoreManager;
 
         public void PlantTiles()
         {
@@ -32,6 +33,7 @@ namespace FarmTiles
                     farmTile.Inject(_seedingCanvas);
                     farmTile.Inject(_cameraController);
                     farmTile.Inject(_farmerCharacter);
+                    farmTile.Inject(_scoreManager);
                     _currentTilePosition.z += tileSize + tilePadding;
                 }
 
@@ -53,6 +55,10 @@ namespace FarmTiles
             else if (service.GetType() == typeof(FarmerCharacter))
             {
                 _farmerCharacter = (FarmerCharacter)service;
+            }
+            else if (service.GetType() == typeof(ScoreManager))
+            {
+                _scoreManager = (ScoreManager)service;
             }
         }
     }

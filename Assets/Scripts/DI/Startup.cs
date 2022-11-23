@@ -16,12 +16,14 @@ namespace DI
         [SerializeField] private FarmTileFactory farmTileFactory;
         [SerializeField] private FarmerCharacter farmerCharacter;
         [SerializeField] private ResetCameraButton resetCameraButton;
+        [SerializeField] private ScoreManager scoreManager;
 
         private void Awake()
         {
             farmTileFactory.Inject(seedingCanvas);
             farmTileFactory.Inject(cameraController);
             farmTileFactory.Inject(farmerCharacter);
+            farmTileFactory.Inject(scoreManager);
             farmTileFactory.PlantTiles();
 
             foreach (var button in seedingButtons)

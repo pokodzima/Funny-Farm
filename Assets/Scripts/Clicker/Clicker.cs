@@ -8,8 +8,10 @@ namespace Clicker
 {
     public class Clicker : MonoBehaviour, IInjectable
     {
+        [SerializeField] private LayerMask clickerLayerMask;
         private UnityEngine.Camera _camera;
         private SeedingCanvas _seedingCanvas;
+        
 
 
         void Update()
@@ -18,7 +20,7 @@ namespace Clicker
             {
                 Vector3 mousePosition = Input.mousePosition;
                 Ray ray = _camera.ScreenPointToRay(mousePosition);
-                if (Physics.Raycast(ray, out RaycastHit hit))
+                if (Physics.Raycast(ray, out RaycastHit hit, 100f, clickerLayerMask ))
                 {
                     if (!EventSystem.current.IsPointerOverGameObject())
                     {
