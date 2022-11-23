@@ -217,7 +217,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -534,10 +534,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_IgnoreReversedGraphics: 1
-  m_BlockingObjects: 0
+  m_BlockingObjects: 3
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 2147483647
 --- !u!114 &346242665
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1317,6 +1317,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9484dc4ee81af47cdabfcb45f6bed335, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1195723931 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2825215456755734768, guid: 1c00ddff55ae04b7183368d7dc7ed87b,
+    type: 3}
+  m_PrefabInstance: {fileID: 2825215456014462581}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1292310841
 GameObject:
   m_ObjectHideFlags: 0
@@ -1573,7 +1579,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 2825215456014462581}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1195723931}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 20a6480deba64528942348c35575e82a, type: 3}
@@ -1769,7 +1775,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -1914,7 +1920,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
+  m_FirstSelected: {fileID: 1195723931}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
 --- !u!4 &2073430434
@@ -2069,6 +2075,11 @@ PrefabInstance:
       propertyPath: m_BlockingMask.m_Bits
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2825215456785620493, guid: 1c00ddff55ae04b7183368d7dc7ed87b,
+        type: 3}
+      propertyPath: m_IgnoreReversedGraphics
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2825215456785620495, guid: 1c00ddff55ae04b7183368d7dc7ed87b,
         type: 3}
       propertyPath: m_Camera
@@ -2141,7 +2152,7 @@ PrefabInstance:
     - target: {fileID: 5515176360479251841, guid: 5ed4e97520891417f8d08caab089e839,
         type: 3}
       propertyPath: clickerLayerMask.m_Bits
-      value: 1
+      value: 23
       objectReference: {fileID: 0}
     - target: {fileID: 5515176360479251847, guid: 5ed4e97520891417f8d08caab089e839,
         type: 3}
